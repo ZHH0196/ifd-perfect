@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>工业故障检测平台</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%; 
+        }
+        .navbar {
+            position: fixed; /* 固定定位使导航栏始终在顶部 */
+            top: 0;
+            width: 100%;
+            background-color: rgba(49, 54, 62, 0.3); /* 与背景遮罩层颜色一致 */
+            padding: 10px 0;
+            text-align: center;
+            z-index: 1000; /* 确保导航栏在最上层 */
+        }
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            margin: 0 15px;
+            font-size: 15px;
+            transition: color 0.3s ease; /* 添加过渡效果 */
+        }
+        .navbar a:hover {
+            color: #58678B; /* 鼠标悬停时颜色变深 */
+        }
+        .active {
+            color: #58678B; /* 当前激活的导航项颜色 */
+        }
+        .background-layer {
+            position: absolute; /* 绝对定位使背景层覆盖整个屏幕 */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(49, 54, 62, 0.3); /* 半透明黑色遮罩层 */
+            z-index: 1; /* 确保背景层在导航栏之下 */
+        }
+        .background {
+            position: relative; /* 相对定位使背景图适应容器大小 */
+            min-height: 100vh; /* 确保背景至少占满视口高度 */
+            background-image: url('/static/img/首页背景图片.png'); /* 图片路径 */
+            background-size: cover; /* 图片覆盖整个容器 */
+            background-position: center;
+            display: flex;
+            align-items: center; /* 垂直居中对齐 */
+            justify-content: center; /* 水平居中对齐 */
+            flex-direction: column; /* 子元素垂直排列 */
+        }
+        .big-text {
+            color: rgb(0, 0, 0); /* 文字颜色 */
+            font-size: 4em; /* 大字号 */
+            font-weight: bold; /* 加粗字体 */
+            margin-bottom: 300px;
+        }
+        .button {
+            position: fixed; /* 固定定位 */
+            left: 50%; /* 水平居中 */
+            bottom: 75px; /* 距离底端75像素 */
+            transform: translateX(-50%); /* 调整水平居中 */
+            background-color: rgba(255, 255, 255, 0.5); /* 半透明背景色 */
+            border: none; /* 无边框 */
+            padding: 10px 20px; /* 内边距 */
+            font-size: 16px; /* 字体大小 */
+            cursor: pointer; /* 光标样式 */
+            z-index: 2; /* 确保按钮在最上层 */
+            transition: background-color 0.3s ease; /* 平滑颜色过渡 */
+            border-radius: 10px; /* 圆角半径 */
+        }
+        .button:hover {
+            background-color: rgba(255, 255, 255, 1);
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        
+        <a href="/dashboard" class="{{ 'active' if active == 'fault-detection' else '' }}">故障检测</a> <!-- 替换为实际链接 -->
+        <a href="/dashboard" class="{{ 'active' if active == 'failure-threshold' else '' }}">评定失效阈值</a> <!-- 替换为实际链接 -->
+        <a href="/dashboard" class="{{ 'active' if active == 'lifetime-detection' else '' }}">寿命检测</a> <!-- 替换为实际链接 -->
+    </div>
+    <div class="background-layer"></div>
+    <div class="background" id="enterButton">
+        <div class="big-text"></div>
+        <button class="button">进入网站</button>
+    </div>
+    <script>
+        document.getElementById('enterButton').addEventListener('click', function() {
+            window.location.href = '/introduction';
+        });
+    </script>
+</body>
+</html>

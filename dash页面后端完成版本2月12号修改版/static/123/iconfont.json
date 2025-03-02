@@ -1,0 +1,37 @@
+{
+  "id": "4842543",
+  "name": "123",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1112503",
+      "name": "工作流程-01",
+      "font_class": "gongzuoliucheng01",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "11021714",
+      "name": "首页_平台优势3_数据精准",
+      "font_class": "shouye_pingtaiyoushi_shujujingzhun",
+      "unicode": "e627",
+      "unicode_decimal": 58919
+    },
+    {
+      "icon_id": "15084946",
+      "name": "row-remove",
+      "font_class": "row-remove",
+      "unicode": "e6b9",
+      "unicode_decimal": 59065
+    },
+    {
+      "icon_id": "20473874",
+      "name": "007-folder",
+      "font_class": "007-folder",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    }
+  ]
+}

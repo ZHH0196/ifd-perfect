@@ -1,0 +1,37 @@
+{
+  "id": "4842586",
+  "name": "456",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1368438",
+      "name": "jy",
+      "font_class": "payment",
+      "unicode": "e644",
+      "unicode_decimal": 58948
+    },
+    {
+      "icon_id": "4264145",
+      "name": "jz",
+      "font_class": "drawing_tools",
+      "unicode": "ec13",
+      "unicode_decimal": 60435
+    },
+    {
+      "icon_id": "18713312",
+      "name": "实时性能",
+      "font_class": "shishixingneng",
+      "unicode": "e6d0",
+      "unicode_decimal": 59088
+    },
+    {
+      "icon_id": "41542631",
+      "name": "自适应",
+      "font_class": "zishiying",
+      "unicode": "e6a0",
+      "unicode_decimal": 59040
+    }
+  ]
+}

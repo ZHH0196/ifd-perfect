@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>工业故障检测平台</title>
+    <link rel="stylesheet" href="/static/css/iconfont.css">
+    <link rel="stylesheet" href="/static/css/iconfont01.css">
+    <link rel="stylesheet" href="/static/css/iconfont02.css">
+    <link rel="stylesheet" href="123/iconfont03.css">
+    <link rel="stylesheet" href="456/iconfont04.css">
+    <link rel="stylesheet" href="789/iconfont05.css">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: auto; /* 允许页面滚动 */
+            background: linear-gradient(45deg, #161a28, #000000, #58678B, #1e2130);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+             scroll-behavior: smooth;
+        }
+        html{
+            scroll-behavior: smooth;
+        }
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+            pointer-events: none;
+        }
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .navbar {
+            position: fixed; /* 固定定位使导航栏始终在顶部 */
+            top: 0;
+            width: 100%;
+            background-color: rgba(49, 54, 62, 0.3); /* 与背景遮罩层颜色一致 */
+            padding: 10px 0;
+            text-align: center;
+            z-index: 1000; /* 确保导航栏在最上层 */
+        }
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            margin: 0 15px;
+            font-size: 15px;
+            transition: color 0.3s ease; /* 添加过渡效果 */
+        }
+        .navbar a:hover {
+            color: #58678B; /* 鼠标悬停时颜色变深 */
+        }
+        .active {
+            color: #58678B; /* 当前激活的导航项颜色 */
+        }
+        .aaa {
+            width:1218.91px;
+            margin:0 auto;    
+        }
+        .bbb{
+            width:1218.91px;
+            height:600px;
+        }
+        .ccc {
+            width:1218.91px;
+            height:600px;
+        }
+        .ddd{
+            width:1218.91px;
+            height:100px;
+            margin-top: 20px;
+        }
+        .ddd div{
+            float:left;
+            width:20%;
+            height:100%;
+            text-align: center;
+            line-height: 100px;
+            margin-right: 80px;
+            background-color: #161a28;
+        }
+        .ddd div:last-child{
+            float:right;
+            margin-right: 0;
+        }
+        .ddd div a{
+            display: inline-block;
+            text-decoration: none;
+            font-size:20px;
+            color: #fff;
+            height:100px;
+            width:244px;
+
+        }
+        .ddd div a:hover{
+            color:#91dfd2;
+            cursor: pointer;
+        }
+        .eee{
+            width:1218.91px;
+            height:800px;
+            background-color: #1e2130;
+            margin-top: 30px;
+        }
+        .fff{
+            width:1218.91px;
+            height:80px;
+            font-size: 40px;
+            font-weight: bold;
+            line-height: 80px;
+            text-align: center;
+            color: #fff;                     
+        }
+        .ggg {
+            width:1218.91px;
+            height:900px;
+            background-color: #1e2130;
+            margin-top: 30px;
+            
+        }
+        .hhh{
+           width:1218.91px;
+            height:800px;
+            background-color: #1e2130;
+            margin-top: 30px;
+            
+        }
+        .iii {
+             width:1218.91px;
+            height:1000px;
+            background-color: #1e2130;
+            margin-top: 30px;
+        }
+         .gga{
+            color: #fff;
+            font-size: 30px;
+            font-weight: 800;
+        }
+        .ggg div p{
+            font-size: 20px;
+            color:#fff;
+
+        }
+        .ggg .ggb{
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+        .ggg ul li{
+            margin-right: 15px;
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-top: 10px;
+            float:left;
+            width:350px;
+            height:600px;
+            transition: transform .42s cubic-bezier(.165, .84, .44, 1);            
+             box-shadow: 0 0 10px 5px rgba(49, 54, 62, 0.5);
+            list-style-type:none;   
+        }
+        .ggg ul li:hover{
+            box-shadow: 7px 15px 15px 0 #31363E;
+            transform: translateY(-12px);
+        }
+        .ggh{
+            font-size: 25px;
+            font-weight: 600;
+            color:#fff;
+            text-align: center;
+        }
+        .ggi{
+            margin-top: 20px;;
+            font-size: 20px;
+            color:#fff;
+        }
+        .ggk{
+            font-size: 16px;
+            color:#fff;
+
+        }
+        .ggl{
+            text-align: center;
+            margin-top: 20px;
+        }
+        .eea{
+            font-size: 20px;
+            color:#fff;
+        }
+        .eeb {
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+        .eee ul li{
+            float:left;
+            width:350px;
+            height:550px;
+            margin-right: 15px;
+            list-style-type: none;
+            box-shadow: 0 0 10px 5px rgba(49, 54, 62, 0.5);
+            transition: transform .42s cubic-bezier(.165, .84, .44, 1);
+            padding-left:10px;
+            padding-right:10px;           
+        }
+          .eee ul li:hover{
+            box-shadow: 7px 15px 15px 0 #31363E;
+            transform: translateY(-12px);
+        }
+        .eee .eec{
+            text-align: center;
+             font-size: 25px;
+            color:#fff;
+             margin-top: 20px;
+             font-weight: 700;
+        }
+        .eee .eed{
+            line-height: 1.7;
+             font-size: 16px;
+            color:#fff;
+        }
+        .iia{
+            color: #fff;
+            font-size: 30px;
+            font-weight: 800;
+        }
+        .iib {
+            font-size: 20px;
+            color:#fff;
+        }
+        .iic{
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+        .iid{
+            font-size: 22px;
+            color:#fff;
+            font-weight: 800;
+        }
+        .iie{
+            font-size: 18px;
+            
+            color:#fff;
+        }
+        .iii ul li{
+            box-sizing: border-box;
+            float:left; 
+            width:340px;
+            height:650px;
+            margin-top: 20px;
+            margin-right: 15px;
+            list-style-type: none;
+             transition: transform .42s cubic-bezier(.165, .84, .44, 1);
+             box-shadow: 0 0 10px 5px rgba(49, 54, 62, 0.5);
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-top: 10px;
+     
+        }
+        .iii ul li:hover{
+            box-shadow: 0 15px 15px 0 #31363E;
+            transform: translateY(-12px);
+        }
+        .box1{
+            position: relative;
+            margin-top: 20px;
+            margin-left: 40px;
+            margin-right: 20px;
+            background-color: #1e2130;
+        }
+        .box2{
+            text-align: center;
+            color:#e6e8ea;
+            font-size: 30px;
+            font-weight: 600;
+        }
+        .box1 ul li{
+            float:left;
+            width:250px;
+            list-style-type:none;
+            border: 2px solid #808080; /* 灰色边框 */
+            box-shadow: 10px 2px 10px rgba(0, 0, 0, 0.5);
+            height:300px;
+            margin-right: 10px;
+        }
+        .box1 ul li .box3{
+            text-align: center;
+            color:#e6e8ea;
+            font-size: 18px;
+
+        }
+        .box1 ul li .box4{
+            text-align: center;
+            color:#e6e8ea;
+            font-size: 16px;
+            margin-top: 13px;
+        }
+        .box5{
+            position:absolute;
+            left: 0px;
+            top: 0px;
+            background-color:#1e2130 ;
+           
+        }
+        .box6{
+            position: absolute;
+            top:150px;
+            left:-30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 30px;
+            background-color: #e6e8ea;
+            color: white;
+            text-align: center;
+            line-height: 60px;
+            font-size: 26px;
+            border: 0px;
+            z-index: 3;
+            }
+        .box7{
+            position: absolute;
+            top:160px;
+            right:-10px;
+             width: 60px;
+            height: 60px;
+            border-radius: 30px;
+            background-color: #e6e8ea;
+            color: white;
+            text-align: center;
+            line-height: 60px;
+            font-size: 26px;
+            border: 0px;
+            z-index: 3;
+        }
+        .box8{
+            z-index: 2;
+            background-color:#1e2130 ;
+        }
+        .hhh .box1 ul li .qwe{
+            width:250px;
+            height:100px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+    </style>
+</head>
+<body>
+    <canvas id="dynamicCanvas"></canvas>
+    <script>
+        const canvas = document.getElementById('dynamicCanvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const particlesArray = [];
+        const starsArray = [];
+        class Particle {
+
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 5 + 1;
+                this.speedX = Math.random() * 3 - 1.5;
+                this.speedY = Math.random() * 3 - 1.5;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.size > 0.2) this.size -= 0.1;
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.closePath();
+                ctx.fill();
+            }
+        }
+
+        class Star {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2;
+                this.speedX = Math.random() * 0.5 - 0.25;
+                this.speedY = Math.random() * 0.5 - 0.25;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.x > canvas.width) this.x = 0;
+                if (this.y < 0) this.y = canvas.height;
+                if (this.y > canvas.height) this.y = 0;
+            }
+
+            draw() {
+                ctx.fillStyle = 'white';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.closePath();
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            for (let i = 0; i < 100; i++) {
+                particlesArray.push(new Particle());
+            }
+            for (let i = 0; i < 500; i++) {
+                starsArray.push(new Star());
+            }
+        }
+        function handleParticles() {
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+                if (particlesArray[i].size <= 0.2) {
+                    particlesArray.splice(i, 1);
+                    i--;
+                }
+            }
+        }
+        function handleStars() {
+            for (let i = 0; i < starsArray.length; i++) {
+                starsArray[i].update();
+                starsArray[i].draw();
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            handleParticles();
+            handleStars();
+            requestAnimationFrame(animate);
+        }
+        init();
+        animate();
+    </script>
+    <div class="navbar">
+        <a href="/dashboard" class="{{ 'active' if active == 'fault-detection' else '' }}">故障检测</a>
+        <a href="/dashboard" class="{{ 'active' if active == 'failure-threshold' else '' }}">评定失效阈值</a> <!-- 替换为实际链接 -->
+        <a href="/dashboard" class="{{ 'active' if active == 'lifetime-detection' else '' }}">寿命检测</a> <!-- 替换为实际链接 -->
+    </div>
+    <div class="aaa">
+        <div class="bbb">
+            <img src="/static/img/首页背景图.png" class="ccc">
+        </div>
+        <div class="ddd">
+            <div><a href="#intr1">平台简介</a></div>
+            <div><a href="#intr2">故障检测</a></div>
+            <div><a href="#intr3">评定失效阈值</a></div>
+            <div><a href="#intr4">寿命检测</a></div>
+        </div>
+        <div class="eee box22" id="intr1">
+            <div class="fff">平台简介</div>
+            <div class="eeb">
+             <div class="gga">总述</div>
+            <div class="eea">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp工业生产设备的高效运行直接关系到生产力和经济效益。为了实现轴承设备的智能化维护与管理，基于人工智能的工业故障检测系统应运而生。本系统以人工智能为核心，
+                结合CNN卷积神经网络、扩展空间森林算子和卡尔曼滤波，提供轴承故障的实时监测、评定失效阙值和寿命预测功能。</div></div>   
+           <ul>
+            <li>
+                <div class="ggh">CNN卷积神经网络</div>
+                <div class="iconfont icon-shenduxuexi_huigui_rnnhuigui"></div>
+                <div class="eed">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp卷积神经网络在轴承故障检测中的作用主要体现在其自动特征提取、强大的噪声鲁棒性、非线性模式识别能力以及对时间序列数据的处理能力，能够通过多层卷积自动学习振动信号中的重要特征，减少人为干预，并且能够有效抑制噪声的影响，从复杂信号中提取出有效故障信息，捕捉设备运行状态的非线性关系，识别不同故障类型，同时适应多维数据和多任务学习，
+                    利用自动化深度学习和高效处理，显著提升轴承故障检测的准确性、稳定性和实时性。</div>
+            </li>
+            <li>
+                <div class="ggh">扩展空间森林算子</div>
+                <div class="iconfont icon-icon_GBDTefljm"></div>
+                <div class="eed">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp扩展空间森林算子在轴承评定失效阈值和预测寿命中的作用主要体现在其强大的非线性建模能力和高效的特征选择能力,该算子通过对多维数据的深度分析，能够识别轴承健康状态的关键特征，并在数据复杂性较高的情况下有效建模。它不仅能准确评估失效阈值，预测设备的故障发生时刻，还能根据历史运行数据动态调整寿命预测，提供更加精确的剩余使用寿命预测。此外，扩展空间森林算子能够处理包含噪声和缺失数据的复杂信号，
+                    增强预测模型的鲁棒性和适应性，有助于实现高效的预测和预警，从而优化设备维护决策。</div>
+            </li>
+            <li>
+                <div class="ggh">卡尔曼滤波</div>
+                <div class="iconfont icon-qiaermanlvbodeyuanli"></div>
+                <div class="eed">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp卡尔曼滤波在轴承评定失效阈值和预测寿命中的作用主要体现在其实时估计和动态更新设备健康状态的能力，通过递归地融合轴承运行过程中的振动信号和其他传感器数据，能够滤除噪声，准确评估轴承的当前健康状况，并预测未来的失效时刻。其强大的状态估计能力使得卡尔曼滤波能够在设备运行过程中持续更新寿命预测，及时发现潜在故障，进而帮助判断失效阈值，并为剩余使用寿命提供精确的预测，
+                    这种动态调整和精确估计的能力，使得卡尔曼滤波在轴承故障诊断和寿命预测中具有重要的实际应用价值。</div>
+            </li>
+            
+           </ul>
+ 
+    </div>
+
+        <div class="ggg box23" id="intr2">
+            <div class="fff">故障检测</div>
+            <div class="ggb">
+                <div class="gga">总述</div>
+                <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp故障检测模块主要负责监测设备运行中的关键参数（如温度、振动、压力、电流等），并利用人工智能算法对这些数据进行分析，
+                    旨在实时高效地识别设备运行中的异常状态，确保工业系统的安全性、稳定性和生产效率，动态检测潜在故障或异常。</p>
+            </div>
+            <ul>
+                <li>
+                    <div class="ggh">技术架构</div>
+                    <div class="iconfont icon-jishujiagou ggl"></div>
+                    <div class="ggi">数据采集</div>
+                    <div class="ggk">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp通过传感器网络获取实时运行数据。</div>
+                    <div class="ggi">数据预处理</div>
+                    <div class="ggk">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp对采集的原始数据进行清洗、降噪、归一化等处理，提升数据质量。</div>
+                    <div class="ggi">数据特征提取</div>
+                    <div class="ggk">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp利用机器学习或深度学习方法提取关键特征，以便更高效地表征设备运行状态。</div>
+                    <div class="ggi">故障检测模型</div>
+                    <div class="ggk">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp卷积神经网络CNN：使用卷积核（filter）提取特征。通过滑动窗口机制与输入数据进行逐点计算，提取局部特征。</div>
+                </li>
+                <li>
+                    <div class="ggh">工作流程</div>
+                    <div class="iconfont icon-gongzuoliucheng ggl"></div>
+                    <div class="ggi">实时数据流入</div>
+                    <div class="ggk">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp传感器将数据传输至中央监控系统。</div>
+                    <div class="ggi">模型推理</div>
+                    <div class="ggk">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp通过CNN模型分析输入数据并输出故障预测结果，利用AI模块继续分析识别故障预测结果。</div>
+                    <div class="ggi">报警机制</div>
+                    <div class="ggk">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp一旦检测到异常，系统触发报警，并提供详细的故障信息。</div>
+                    <div class="ggi">决策支持</div>
+                    <div class="ggk">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp通过数据可视化和解释性模型，提供具体诊断依据。</div>
+                </li>
+                <li>
+                    <div class="ggh">平台优势</div>
+                    <div class="iconfont icon-gaominjie1-01 ggl"></div>
+                    <div class="ggi">高效性</div>
+                    <div class="ggk">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp相较传统规则的检测系统，AI模块可处理高维、复杂、多变的数据。</div>
+                    <div class="ggi">准确性</div>
+                    <div class="ggk">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp通过持续学习和模型优化，检测准确率不断提高，减少误报和漏报。</div>
+                    <div class="ggi">智能性</div>
+                    <div class="ggk">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp具备预测性维护功能，可提前发现潜在问题，避免故障扩大化。</div>
+                </li>
+                
+
+            </ul>
+        </div>
+
+
+
+         <div class="hhh box24" id="intr3">
+            <div class="fff">评定失效阈值</div>
+            <div class="iic">
+                <div class="iia">总述</div>
+                <div class="iib">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp评定失效阙值模块主要负责确定轴承设备在发生故障或异常时的阈值判定标准。它通过对历史数据的分析，智能识别轴承失效的临界点，
+                    帮助系统在运行过程中及时识别和响应潜在的故障风险，从而实现精准的故障预警和有效的维护决策。</div>
+                <div><span class="iid">故障临界值的自动计算：</span><span class="iie">利用扩展空间森林算子和卡尔曼滤波并结合人工智能算法，根据设备历史运行数据与故障记录，预测设备的失效阙值。</span></div>
+                <div><span class="iid">动态阈值调整：</span><span class="iie">随着设备运行状态和环境条件的变化，动态调整失效阙值。</span></div>
+                <div><span class="iid">多维度数据融合：</span><span class="iie">结合多个传感器数据源（如温度、振动、电流等），综合评定失效阙值。</span></div>
+                <div><span class="iid">自动预警机制：</span><span class="iie">在设备状态接近设定阈值时，提前进行故障预警。</span></div>                
+            </div>  
+            <div class="box1">
+                
+            
+               <div class="box5 box8"> 
+                <div class="box2">技术架构</div>
+                <ul>
+                    <li>
+                    <div class="box3">数据采集</div>
+                    <div class="box4">通过传感器网络获取实时运行数据。</div>
+                    <div class="iconfont icon-gongzuoliucheng01 qwe"></div>
+                    </li>
+                    <li>
+                    <div class="box3">数据预处理</div>
+                    <div class="box4">对采集的原始数据进行清洗、降噪、归一化等处理，提升数据质量。</div>
+                    <div class="iconfont icon-shouye_pingtaiyoushi_shujujingzhun qwe"></div>
+                    </li>
+                    <li>
+                    <div class="box3">特征提取</div>
+                    <div class="box4">利用机器学习或深度学习方法提取关键特征，以便更高效地表征设备运行状态。</div>
+                    <div class="iconfont icon-row-remove qwe"></div>
+                    </li>
+                    <li>
+                    <div class="box3" >评定模型</div>
+                    <div class="box4">扩展空间森林算子通过利用空间信息和多个尺度的特征，能够自动评定和优化阙值。</div>
+                    <div class="iconfont icon-007-folder qwe"></div>
+                    </li>
+
+                </ul>
+               </div>
+               <div class="box5"> 
+                <div class="box2">工作流程</div>
+                <ul>
+                    <li>
+                    <div class="box3">数据流入</div>
+                    <div class="box4">传感器将设备的运行数据实时传输至评定失效阙值模块。</div>
+                    <div class="iconfont icon-shujuliuru qwe"></div>
+                    </li>
+                    <li>
+                    <div class="box3">数据处理与特征提取</div>
+                    <div class="box4">模块对原始数据进行清洗、处理，并提取出关键特征。</div>
+                    <div class="iconfont icon-shujuchuli qwe"></div>
+                    </li>
+                    <li>
+                    <div class="box3">阈值计算与更新</div>
+                    <div class="box4">通过模型计算并设定设备运行的失效阙值，并根据实时数据进行调整。</div>
+                     <div class="iconfont icon-leftbar_calculation_results qwe"></div>
+                    </li>
+                    <li>
+                    <div class="box3" >预警触发</div>
+                    <div class="box4">当设备的运行参数接近设定阈值时，系统自动触发预警，并发送可能的故障信息。</div>
+                    <div class="iconfont icon-jijiangdaoqi qwe"></div>
+                    </li>
+
+                </ul>
+               </div>
+               <div class="box5"> 
+                <div class="box2">平台优势</div>
+                <ul>
+                    <li>
+                    <div class="box3">精准性</div>
+                    <div class="box4">通过人工智能的学习和预测能力，失效阙值的计算更加精确，减少人为干预的误差。</div>
+                    <div class="iconfont icon-drawing_tools qwe"></div>
+                    </li>
+                    <li>
+                    <div class="box3">实时性</div>
+                    <div class="box4">动态阈值调整可以在设备运行过程中根据实际变化自动更新，避免静态阈值带来的风险。</div>
+                    <div class="iconfont icon-shishixingneng qwe"></div>
+                    </li>
+                    <li>
+                    <div class="box3">自适应</div>
+                    <div class="box4">随着设备运行状态和环境的变化，系统能够自适应调整失效阙值，提高系统的鲁棒性。</div>
+                    <div class="iconfont icon-zishiying qwe"></div>
+                    </li>
+                    <li>
+                    <div class="box3" >节约性</div>
+                    <div class="box4">避免过早或过晚的故障预警，有效降低维护成本和停机时间。</div>
+                    <div class="iconfont icon-payment qwe"></div>
+                    </li>
+                </ul>                
+               </div> 
+              <button class="box6">&lt;</button>
+              <button class="box7">&gt;</button>      
+            </div>              
+        </div>
+            
+        <div class="iii box25" id="intr4">
+            <div class="fff">寿命检测</div>
+            <div class="iic">
+            <div>
+                <div class="iia">总述</div>
+                <div class="iib">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp寿命预测模块主要负责评估轴承设备或部件的健康状态，并预测其剩余寿命，以便提前安排维护和更换计划。旨在通过对设备运行数据的分析，
+                    预测设备或关键部件的剩余使用寿命 ，为维护决策提供主要依据，帮助实现预测性维护，降低停机风险和维护成本。</div>
+                <div style=color:#fff>-------------------------------------------------------------------------------------------------------------------------------------------------------</div>    
+                <div> <span class="iid">寿命预测:</span><span class="iie">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp利用历史运行数据和实时监测数据，估算轴承设备的剩余使用寿命。</span> </div>
+                <div> <span class="iid">故障趋势分析:</span><span class="iie">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp预测设备健康状态的变化趋势，识别潜在故障风险。</span> </div>
+                <div> <span class="iid">决策支持:</span><span class="iie">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp提供维修或更换的时间窗口建议，优化维护策略。</span> </div>
+            </div>
+            <ul>
+                <li>
+                    <div class="ggh">技术架构</div>
+                    <div class="iconfont icon-zhuyejishujiagou"></div>
+                    <div class="ggi">数据采集：</div>
+                    <div  class="ggk">通过传感器收集与设备寿命相关的运行数据，如振动、温度、压力、电流等。</div>
+                    <div  class="ggi">数据预处理：</div>
+                    <div  class="ggk">对数据进行清洗、降噪和特征提取，剔除无关或冗余信息。</div>
+                    <div  class="ggi">寿命预测模型：</div>
+                    <div  class="ggk">扩展空间森林算子能够通过处理设备的历史数据、实时监测数据及环境因素等多维信息，对设备的寿命进行精确预测，捕捉设备寿命的演变趋势，并在不同的时间节点动态调整预测结果，从而提高设备剩余寿命的预测准确性；卡尔曼滤波通过对设备运行数据的平滑和估计，
+                        持续估计设备的健康状态，及时预测设备可能发生故障的时间和剩余寿命。</div>
+                </li>
+                <li>
+                    <div class="ggh">工作流程</div>
+                    <div class="iconfont icon-pingtaiyoushi-"></div>
+                    <div class="ggi">数据采集与监测：</div>
+                    <div  class="ggk">传感器实时采集设备运行数据，传输至系统。</div>
+                    <div  class="ggi">数据处理与特征提取：</div>
+                    <div  class="ggk">模块对原始数据进行降噪、平滑处理，并提取关键特征，如振动幅值、温升速率等。</div>
+                    <div  class="ggi">模型训练与推理:</div>
+                    <div  class="ggk">通过历史数据训练模型对当前设备状态进行评估，预测剩余寿命。</div>
+                    <div  class="ggi">寿命预测结果展示：</div>
+                    <div  class="ggk">系统生成预测结果及剩余寿命估计值。</div>
+                    <div  class="ggi">维护建议输出：</div>
+                    <div  class="ggk">根据寿命预测结果，提供维护或更换建议。</div>
+                </li>
+                <li>
+                    <div class="ggh">平台优势</div>
+                    <div class="iconfont icon-gongzuoliucheng"></div>
+                    <div class="ggi">精准预测：</div>
+                    <div  class="ggk">通过整合模型算法能够从复杂的设备数据中提取高价值信息，实现高精度寿命预测。</div>
+                    <div  class="ggi">动态更新：</div>
+                    <div  class="ggk">基于实时数据不断更新寿命预测，提供最新的设备健康评估。</div>
+                    <div  class="ggi">成本优化：</div>
+                    <div  class="ggk">避免过早维护导致的资源浪费或过晚维修引发的停机损失，优化维护成本。</div>
+                </li>
+               
+            </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+        let i = 0
+        let d = setInterval(function () {
+            i++
+            if (i >= 4) {
+                i = 1
+            }
+            const li = document.querySelector(` .box8`)
+            li.classList.remove('box8')
+            const div = document.querySelector(`.box1 .box5:nth-child(${i}) `)
+            div.classList.add('box8')
+        }, 1000)
+
+        const c = document.querySelector('.box1')
+        c.addEventListener('mouseenter', function () {
+            clearInterval(d)
+        })
+        c.addEventListener('mouseleave', function () {
+
+            d = setInterval(function () {
+                i++
+                if (i >= 4) {
+                    i = 1
+                }
+                const li = document.querySelector(`.box8`)
+                li.classList.remove('box8')
+                const div = document.querySelector(`.box1 .box5:nth-child(${i}) `)
+                div.classList.add('box8')
+            }, 1000)
+        })
+        const a = document.querySelector('.box6')
+        a.addEventListener('click', function () {
+            i++
+            if (i >= 4) {
+                i = 1
+            }
+            const li = document.querySelector(`.box8`)
+                li.classList.remove('box8')
+                const div = document.querySelector(`.box1 .box5:nth-child(${i}) `)
+                div.classList.add('box8')
+        })
+        const b = document.querySelector('.box7')
+        b.addEventListener('click', function () {
+            i--
+            if (i <= 0) {
+                i = 3
+            }
+            const li = document.querySelector(`.box8`)
+                li.classList.remove('box8')
+                const div = document.querySelector(`.box1 .box5:nth-child(${i}) `)
+                div.classList.add('box8')
+        })
+    </script>
+</body>
+</html>

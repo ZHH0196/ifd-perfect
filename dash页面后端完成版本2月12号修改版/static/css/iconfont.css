@@ -1,0 +1,29 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 4772025 */
+  /* Color fonts */
+  src: 
+       url('/static/fonts/font0/iconfont.woff2?t=1733412263702') format('woff2'),
+       url('/static/fonts/font0/iconfont.woff?t=1733412263702') format('woff'),
+       url('/static/fonts/font0/iconfont.ttf?t=1733412263702') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 160px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-gaominjie1-01:before {
+  content: "\e975";
+}
+
+.icon-gongzuoliucheng:before {
+  content: "\e620";
+}
+
+.icon-jishujiagou:before {
+  content: "\e8ea";
+}
+

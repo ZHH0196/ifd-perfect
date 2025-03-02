@@ -1,0 +1,30 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 4772313 */
+  /* Color fonts */
+  src: 
+       url('/static/fonts/font1/iconfont.woff2?t=1733452677935') format('woff2'),
+       url('/static/fonts/font1/iconfont.woff?t=1733452677935') format('woff'),
+       url('/static/fonts/font1/iconfont.ttf?t=1733452677935') format('truetype');
+}
+
+.iconfont {
+  text-align: center;
+  font-family: "iconfont" !important;
+  font-size: 160px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-qiaermanlvbodeyuanli:before {
+  content: "\e754";
+}
+
+.icon-shenduxuexi_huigui_rnnhuigui:before {
+  content: "\e898";
+}
+
+.icon-icon_GBDTefljm:before {
+  content: "\e74b";
+}
+

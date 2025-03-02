@@ -1,0 +1,37 @@
+{
+  "id": "4842588",
+  "name": "789",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "12273694",
+      "name": "leftbar_计算结果",
+      "font_class": "leftbar_calculation_results",
+      "unicode": "e6fa",
+      "unicode_decimal": 59130
+    },
+    {
+      "icon_id": "14642413",
+      "name": "即将到期",
+      "font_class": "jijiangdaoqi",
+      "unicode": "e65e",
+      "unicode_decimal": 58974
+    },
+    {
+      "icon_id": "38810579",
+      "name": "数据流入",
+      "font_class": "shujuliuru",
+      "unicode": "e62c",
+      "unicode_decimal": 58924
+    },
+    {
+      "icon_id": "4846719",
+      "name": "数据处理",
+      "font_class": "shujuchuli",
+      "unicode": "e651",
+      "unicode_decimal": 58961
+    }
+  ]
+}
